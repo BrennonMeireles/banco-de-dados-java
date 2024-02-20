@@ -10,16 +10,16 @@ A integração com o banco de dados XAMPP é essencial para o armazenamento segu
 
 Este projeto serve como uma base sólida para o desenvolvimento de sistemas de login mais complexos e robustos em Java, e pode ser estendido com funcionalidades adicionais, como recuperação de senha, controle de acesso baseado em funções, entre outros.
 
-## Recursos
-Cadastro de usuários
-Login de usuários
-Validação de credenciais
-Integração com banco de dados MySQL
-Tecnologias Utilizadas
-Java
-NetBeans IDE
-MySQL
-XAMPP
+## Recurso
+- Cadastro de usuários
+- Login de usuários
+- Validação de credenciais
+- Integração com banco de dados MySQL
+- Tecnologias Utilizadas
+- Java
+- NetBeans IDE
+- MySQL
+- XAMPP
 
 
 Sinta-se à vontade para personalizar este README de acordo com as especificidades do seu projeto e adicionar qualquer outra informação relevante.
