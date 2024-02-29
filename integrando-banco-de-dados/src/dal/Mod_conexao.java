@@ -8,7 +8,7 @@ public class Mod_conexao {
         java.sql.Connection conexao = null;
         //a linha abaixo chama o driver
         String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/usuarios";
+        String url = "jdbc:mysql://localhost:3307/usuarios";
         
         String user ="root";
         String password = "";
