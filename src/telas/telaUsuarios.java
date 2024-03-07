@@ -19,6 +19,7 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
     String sql = "SELECT * FROM tb_usuarios WHERE id=?";
     
     try {
+    pst = conexao.prepareStatement(sql);
     pst.setString(1,txtId.getText());
     rs = pst.executeQuery();
     if (rs.next()) {
@@ -44,14 +45,46 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
         pst.setString(1 ,txtNome.getText());
         pst.setString(2 ,txtEmail.getText());
         pst.setString(3 ,txtSenha.getText());
-        pst.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso.");
+        
+        int adicionado = pst.executeUpdate(); // retorna 1 se estiver correto
+        
+        if (adicionado > 0) {
+            JOptionPane.showMessageDialog(null, "Usuario Cadastrado");
+    //      Exibe a msg caso inserido com sucesso
+    //      as linhas abaixo irão limpar o formulario
+            txtNome.setText(null);
+            txtEmail.setText(null);
+            txtSenha.setText(null);
+            txtNome.setText(null);
+        }
+        
+        
+        
+//        JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso.")
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Erro ao adicionar usuário: " + e.getMessage());
     } finally {
     }
     
 }
+   
+    private void alterar() {
+        String sql = "UPDATE tb_usuarios SET nome = ?, email = ?, senha = ? WHERE id = ?";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, txtNome.getText());
+            pst.setString(2, txtEmail.getText());
+            pst.setString(3, txtSenha.getText());
+            pst.setString(4, txtId.getText());
+            int adicionado = pst.executeUpdate();
+            // Retorna 1 se OK
+            if (adicionado > 0) {
+                JOptionPane.showMessageDialog(null, "USUÁRIO ALTERADO COM SUCESSO");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao alterar usuário: " + e.getMessage());
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -119,6 +152,11 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
         btnApagar.setText("Apagar");
 
         btnEdit.setText("Editar");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,6 +247,11 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         adicionar();
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        alterar();
+    }//GEN-LAST:event_btnEditActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
