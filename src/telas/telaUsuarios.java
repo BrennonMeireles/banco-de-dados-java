@@ -85,6 +85,20 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Erro ao alterar usuário: " + e.getMessage());
         }
     }
+    
+    private void apagar(){
+        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir este usuario?", "ATENÇÃO", JOptionPane.YES_NO_OPTION);
+        if(confirma == JOptionPane.YES_OPTION){
+            String sql = "DELETE FROM usuarios WHERE id = ?";
+            try{
+                pst = conexao.prepareStatement(sql);
+                pst.setString(1, txtId.getText());
+                pst.executeUpdate();
+            } catch(Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -150,6 +164,11 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
         });
 
         btnApagar.setText("Apagar");
+        btnApagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApagarActionPerformed(evt);
+            }
+        });
 
         btnEdit.setText("Editar");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -252,6 +271,11 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         alterar();
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnApagarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
