@@ -55,7 +55,6 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
             txtNome.setText(null);
             txtEmail.setText(null);
             txtSenha.setText(null);
-            txtNome.setText(null);
         }
         
         
@@ -93,6 +92,16 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
             try{
                 pst = conexao.prepareStatement(sql);
                 pst.setString(1, txtId.getText());
+                int apagado = pst.executeUpdate();
+                if (apagado > 0){
+                    JOptionPane.showMessageDialog(null, "USUÁRIO APAGADO");
+//                    limpa o formulario
+                    txtNome.setText(null);
+                    txtEmail.setText(null);
+                    txtSenha.setText(null);
+
+                      
+                } 
                 pst.executeUpdate();
             } catch(Exception e) {
                 JOptionPane.showMessageDialog(null, e);
