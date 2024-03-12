@@ -89,7 +89,7 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
     private void apagar(){
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir este usuario?", "ATENÇÃO", JOptionPane.YES_NO_OPTION);
         if(confirma == JOptionPane.YES_OPTION){
-            String sql = "DELETE FROM usuarios WHERE id = ?";
+            String sql = "DELETE FROM tb_usuarios WHERE id = ?";
             try{
                 pst = conexao.prepareStatement(sql);
                 pst.setString(1, txtId.getText());
@@ -274,7 +274,7 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
 
     private void btnApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagarActionPerformed
         // TODO add your handling code here:
-        
+        apagar();
     }//GEN-LAST:event_btnApagarActionPerformed
 
 
