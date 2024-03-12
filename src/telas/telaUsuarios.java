@@ -5,7 +5,6 @@ import dal.Mod_conexao;
 import javax.swing.JOptionPane;
 
 public class telaUsuarios extends javax.swing.JInternalFrame {
-    
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -57,8 +56,6 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
             txtSenha.setText(null);
         }
         
-        
-        
 //        JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso.")
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Erro ao adicionar usuário: " + e.getMessage());
@@ -84,7 +81,6 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Erro ao alterar usuário: " + e.getMessage());
         }
     }
-    
     private void apagar(){
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir este usuario?", "ATENÇÃO", JOptionPane.YES_NO_OPTION);
         if(confirma == JOptionPane.YES_OPTION){
@@ -99,8 +95,6 @@ public class telaUsuarios extends javax.swing.JInternalFrame {
                     txtNome.setText(null);
                     txtEmail.setText(null);
                     txtSenha.setText(null);
-
-                      
                 } 
                 pst.executeUpdate();
             } catch(Exception e) {
